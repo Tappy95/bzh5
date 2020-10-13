@@ -1,0 +1,18 @@
+.mint-loadmore-top {
+    margin-top: 0 !important;
+}
+.mint-loadmore-top , .mint-loadmore-bottom{
+    height: 2.2rem !important;
+    line-height: 2.2rem !important;
+}
+.mint-loadmore-text {
+    color: #3C3E5B !important;
+    font-size: 0.8rem !important;
+}
+.mint-cell-wrapper{
+    display: inline-block !important;
+    padding:0 !important;
+}
+.mint-cell-swipe-button{
+    line-height: 4.2rem;
+}
