@@ -27,9 +27,10 @@
                     <p>邀请码：{{listData.qrCode}}</p>
                 </div>
             </div>
-            <div class="et_scroll_right" v-clipboard:copy="listData.qrCode"
+            <!-- <div class="et_scroll_right" v-clipboard:copy="listData.qrCode"
                 v-clipboard:success="onCopy"
-                v-clipboard:error="error">复制邀请码</div>
+                v-clipboard:error="error">复制邀请码</div> -->
+                <div class="et_scroll_right copy_qrcode" @click="copyQrcode">复制邀请码</div>
         </div>
 
         <div class="enlighteningMoney-title">
@@ -289,7 +290,7 @@
 // import Vue from 'vue'
 // import VueClipboard from 'vue-clipboard2'
 // Vue.use(VueClipboard)
-
+import Clipboard from 'clipboard';
 export default {
     data(){
         return{
@@ -351,6 +352,22 @@ export default {
         })
     },
     methods:{
+        copyQrcode(){
+            let _this = this
+            let clipboard = new Clipboard('.copy_qrcode', {
+                text: function () {
+                    return _this.listData.qrCode
+                }
+            })
+            clipboard.on('success', function () {
+                _this.$toast('复制成功');
+                clipboard.destroy()
+            })
+            clipboard.on('error', function () {
+                _this.$toast('复制失败，请手动复制');
+                clipboard.destroy()
+            })
+        },
         toggle(id){
             this.status = id;
         },
