@@ -22,6 +22,11 @@
             <input type="text" v-model="UserPhone" placeholder="请输入号码">
           </div>
 
+          <div class="user_input" style="margin-bottom:0.7rem">
+            <img class="inpur_sig" src="../../assets/register_shouji.png"/>
+            <input type="password" v-model="password" placeholder="请输入密码">
+          </div>
+
           <div class="user_input">
               <img class="inpur_sig" src="../../assets/register_yanzhengma.png"/>
               <input type="text" v-model="UserCode" placeholder="请输入验证码">
@@ -93,11 +98,12 @@
   // import Vue from 'vue'
   // import VueClipboard from 'vue-clipboard2'
   // Vue.use(VueClipboard)
-
+  import md5 from 'js-md5'
   export default {
     data() {
       return {
         UserPhone:"",
+        password:"",
         UserCode:'',
         codeStatus:'获取验证码',
         countdown: 60,
@@ -267,6 +273,14 @@
         //   Toast("请输入正确的手机号")
         //   return false;
         // }
+        if (!this.accountNum){
+          this.$toast("请输入手机号")
+          return false;
+        }
+        if (!this.password){
+          this.$toast("请输入密码")
+          return false;
+        }
         if (!this.UserCode){
           this.$toast("请输入验证码")
           return false;
@@ -284,7 +298,8 @@
               let parameter = {
                 codeKey:res.data.codeKey,
                 mobile:this.UserPhone,
-                qrCode:this.qrCode
+                qrCode:this.qrCode,
+                password:md5(this.password)
               }
               this.$get('/api/userInfo/regH5', parameter).then(res => {
                 this.$toast(res.message);
