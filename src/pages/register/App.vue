@@ -273,10 +273,6 @@
         //   Toast("请输入正确的手机号")
         //   return false;
         // }
-        if (!this.accountNum){
-          this.$toast("请输入手机号")
-          return false;
-        }
         if (!this.password){
           this.$toast("请输入密码")
           return false;
