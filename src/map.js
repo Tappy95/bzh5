@@ -52,7 +52,7 @@ let map ={
   // 落地页
   'channelDownload':{
     build:true,
-    dev:false
+    dev:true
   },
   // 抽奖
   'choujiang':{

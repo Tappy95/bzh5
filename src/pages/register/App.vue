@@ -40,7 +40,8 @@
           </div>
           <div class="tip">
             邀请码: {{qrCode}}
-            <span v-clipboard:copy="qrCode" v-clipboard:success="onCopy" v-clipboard:error="onCopy">复制</span>
+            <!-- <span v-clipboard:copy="qrCode" v-clipboard:success="onCopy" v-clipboard:error="onCopy">复制</span> -->
+            <span>复制</span>
           </div>
         </div>
 
