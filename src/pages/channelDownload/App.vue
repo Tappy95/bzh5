@@ -45,7 +45,7 @@
               <img src="../../assets/channelDownload/channelDownload_baozhu.png" />
             </div>
             <div class="text">
-              <p class="title">宝猪乐园</p>
+              <p class="title">麒麟乐园</p>
               <p class="tip">一亿人都想玩的赚钱APP</p>
             </div>
           </div>
@@ -69,6 +69,7 @@
           </p>
           <div>
             <input type="text" placeholder="请输入注册手机号" id="phone" v-model="UserPhone" @click="inputFocus"/>
+            <input type="password" placeholder="请输入注册密码" id="password" v-model="password"/>
             <div class="cd_flex">
               <input type="text" placeholder="短信验证码" id="code" v-model="UserCode"/>
               <div @click="codeTime(1)">{{codeStatus}}</div>
@@ -107,6 +108,7 @@
 
 // import { Toast } from "mint-ui";
 import { formatDate } from "../../utils/date.js";
+import md5 from 'js-md5'
 // import Vue from "vue";
 // import VueClipboard from "vue-clipboard2";
 // Vue.use(VueClipboard);
@@ -121,11 +123,12 @@ export default {
       isShowTrue:false,
       channelCode: '',
       loadUrl: '',
-      qq: 1501305376,
+      qq: 706306245,
       termianlType: 0,
       codeStatus: "获取验证码",
       countdown: 60,
       UserPhone: '',
+      password: '',
       UserCode:'',
       codeKey:''
     };
@@ -276,6 +279,10 @@ export default {
     // },
     //立即领取
     registerTap() {
+      if (!this.password) {
+        this.$toast("请输入密码");
+        return false;
+      }
       if (!this.UserCode) {
         this.$toast("请输入验证码");
         return false;
@@ -286,6 +293,7 @@ export default {
         sendMode: 1,
         code: this.UserCode
       };
+      console.log(this.password,md5(this.password))
       this.$get("/push/validateCode/validateSmsCode", parameterData).then(res => {
           if ((res.statusCode + "").startsWith("2")) {
             if (res.data.res == true) {
@@ -295,6 +303,7 @@ export default {
                 token: this.token,
                 imei: this.imei,
                 mobile: this.UserPhone,
+                password:md5(this.password),
                 channelCode: this.channelCode
               };
               this.$get("/api/userInfo/regChannelH5", parameter).then(res => {
@@ -743,7 +752,7 @@ p {
 }
 .cd_inner_con p {
   position: absolute;
-  top: 11.9rem;
+  top: 10.6rem;
   left: 5.1rem;
   font-size: 0.55rem;
   color: #fff;
@@ -753,6 +762,18 @@ p {
   color: #fff700;
 }
 #phone {
+  width: 11.6rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.2rem;
+  position: absolute;
+  top: 10.5rem;
+  left: 3.1rem;
+  font-size: 0.65rem;
+  color: #9ea9bc;
+  padding-left: 0.6rem;
+}
+#password {
   width: 11.6rem;
   height: 2rem;
   border: none;

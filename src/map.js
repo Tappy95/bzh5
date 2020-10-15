@@ -199,6 +199,11 @@ let map ={
     build:true,
     dev:true
   },
+  // 注册
+  'register2':{
+    build:true,
+    dev:true
+  },
   // 对战答题
   'startAgainst':{
     build:false,

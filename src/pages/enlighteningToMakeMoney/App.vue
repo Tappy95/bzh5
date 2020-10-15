@@ -20,7 +20,8 @@
         <div class="et_scroll">
             <div class="et_scroll_left">
                 <div>
-                    <img :src="listData.photo" alt="">
+                    <!-- <img :src="listData.photo" alt=""> -->
+                    <img src="../../assets/lllico.png" alt="">
                 </div>
                 <div>
                     <p>麒麟身份：{{listData.roleType}}<span>{{listData.highRole}}</span></p>
