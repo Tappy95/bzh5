@@ -8,6 +8,14 @@
      <div class="wrap_main">
        <div class="bg"></div>
         <div class="box">
+          <div class="title_tip" v-if="localhref" style="position: absolute;
+    top: -1.5rem;
+    text-align: center;
+    width: 100%;">
+            <span class="color_1" style="background-color:#FF2A4A;padding: 4px 11px;
+    border-radius: 500px;
+    color: white;" @click="redown">下载APP</span>
+          </div>
           <div class="title_tip">
             <span class="color_1">注册即送</span>
             <span class="color_2">1000</span>
@@ -17,7 +25,7 @@
             <span class="color_2">就提现!</span>
           </div>
 
-          <div class="user_input">
+          <div class="user_input" style="margin-bottom:0.7rem">
             <img class="inpur_sig" src="../../assets/register_shouji.png"/>
             <input type="text" v-model="UserPhone" placeholder="请输入号码">
           </div>
@@ -116,7 +124,8 @@
         imei:'',
         isShow:true,
         termianlType:0,
-        rehttp:''
+        rehttp:'',
+        localhref:''
       }
     },
     watch:{
@@ -145,6 +154,12 @@
         this.$toast("请使用移动端打开！");
         this.termianlType=5;
       }
+      // localStorage.setItem('localhref','http://baidu.com')
+      let localhref = localStorage.getItem('localhref')
+      if(localhref){
+        this.localhref = localhref
+      }
+      console.log(this.localhref)
     },
     filters: {
       formatDate(time) {
@@ -155,6 +170,7 @@
     destroyed() {
       clearTimeout(this.isDestroyed);
       clearInterval(this.interval);
+      localStorage.removeItem("localhref")
     },
     methods: {
       onCopy(e){
@@ -171,6 +187,11 @@
           }
         })
       },
+      redown(){
+        if(this.localhref != ''){
+          window.location.href = this.localhref;
+        }
+      },
       getDownLoadUrl(){
         if(this.channelCode == null || this.channelCode == 'null' || this.channelCode == ''){
           this.channelCode = 'baozhu';
@@ -185,6 +206,7 @@
         };
         this.$get("/api/mChannelInfo/getDownloadUrl", par).then(res => {
           if ((res.statusCode + "").startsWith("2")) {
+                localStorage.setItem('localhref',res.data)
             window.location.href = res.data;
           }
         });
