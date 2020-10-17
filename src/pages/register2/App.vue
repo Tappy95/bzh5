@@ -205,7 +205,8 @@
           channelCode: this.channelCode
         };
         this.$get("/api/mChannelInfo/getDownloadUrl", par).then(res => {
-          if ((res.statusCode + "").startsWith("2")) {
+          //2注册成功后正常下载 3推荐人不存在3005 或 手机用户已存在3004 是否下载
+          if ((res.statusCode + "").startsWith("2") || res.statusCode == '3004' || res.statusCode == '3005') {
                 localStorage.setItem('localhref',res.data)
             window.location.href = res.data;
           }
