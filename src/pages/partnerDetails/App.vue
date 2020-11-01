@@ -15,7 +15,7 @@
                             <th>时间</th>
                         </tr>
                     </thead>
-                    <tbody v-for="(item,index) in listData">
+                    <tbody v-for="(item,index) in listData" :key="index">
                         <tr>
                             <td>{{item.changedType}}</td>
                             <td>{{item.amount}}

@@ -59,7 +59,33 @@
             </div>
         </div> -->
 
-        <div style="background-color:#F2F5F8" @click="openPD">
+
+        <div style="background-color:#F2F5F8" @click="openID">
+            <div class="gd_bottom">
+                <div class="gd_bottom_title_last">
+                    <p style="margin-left:7rem">团队详情</p>
+                    <div class="gd_font">
+                        <p>详情</p>
+                        <img src="../../assets/rightBtn.png" alt="">
+                    </div>
+                </div>
+                <div class="gd_bottom_conten">
+                    <div class="gd_bottom_left">
+                        <p>人数</p>
+                        <p>{{listData.drPeopleNum}}</p>
+                    </div>
+                    <div class="gd_bottom_right">
+                        <p style="margin: 0.75rem 0 0.3rem 0;">收益</p>
+                        <div class="gd_bottom_right_inner">
+                            <p>{{listData.drReward}}</p>
+                            <img src="../../assets/jinbi.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div style="background-color:#F2F5F8" @click="openPD">
             <div class="gd_bottom">
                 <div class="gd_bottom_title_last">
                     <p style="margin-left:6rem">合伙人、小客服</p>
@@ -82,34 +108,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div style="background-color:#F2F5F8" @click="openID">
-            <div class="gd_bottom">
-                <div class="gd_bottom_title_last">
-                    <p style="margin-left:7rem">邀请达人</p>
-                    <div class="gd_font">
-                        <p>详情</p>
-                        <img src="../../assets/rightBtn.png" alt="">
-                    </div>
-                </div>
-                <div class="gd_bottom_conten">
-                    <div class="gd_bottom_left">
-                        <p>人数</p>
-                        <p>{{listData.drPeopleNum}}</p>
-                    </div>
-                    <div class="gd_bottom_right">
-                        <p style="margin: 0.75rem 0 0.3rem 0;">收益</p>
-                        <div class="gd_bottom_right_inner">
-                            <p>{{listData.drReward}}</p>
-                            <img src="../../assets/jinbi.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div style="background-color:#F2F5F8" @click="openPage">
+        <!-- <div style="background-color:#F2F5F8" @click="openPage">
             <div class="gd_bottom">
                 <div class="gd_bottom_title_last">
                     <p style="margin-left:6.1rem">普通行为贡献</p>
@@ -132,7 +134,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div style="height:2rem"></div>
 
     </div>
@@ -142,20 +144,20 @@ export default {
     data(){
         return{
             listData:{
-                teamBenefit:'0',
-                additionalProfit:'0',
-                directPeopleNum:'0',
-                directProfit:'0',
-                indirectPeopleNum:'0',
-                indirectProfit:'0',
-                ordinaryPeopleNum:'0',
-                ordinaryProfit:'0',
-                drPeopleNum:'0',
-                drReward:'0',
-                highVipCount:'0',
-                highVipAmount:'0'
+                teamBenefit:'1',
+                additionalProfit:'2',
+                directPeopleNum:'3',
+                directProfit:'4',
+                indirectPeopleNum:'5',
+                indirectProfit:'6',
+                ordinaryPeopleNum:'7',
+                ordinaryProfit:'8',
+                drPeopleNum:'9',
+                drReward:'10',
+                highVipCount:'11',
+                highVipAmount:'12'
             },
-            reward:'0'
+            reward:'13'
         }
     },
     created(){
@@ -174,7 +176,7 @@ export default {
                 token:this.token,
                 imei:this.imei
             }
-            this.$get('/api/userInfo/extensionStatistic',parameterData).then(res =>{
+            this.$get('/py/partner/reward_detail',parameterData).then(res =>{
                 if((res.statusCode+"").startsWith("2")){
                     this.listData = res.data;
                     this.reward = res.data.reward;

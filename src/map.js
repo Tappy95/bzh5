@@ -182,7 +182,7 @@ let map ={
   // 我的奖励
   'myReward':{
     build:true,
-    dev:false
+    dev:true
   },
   // 新手福利
   'newWelfare':{

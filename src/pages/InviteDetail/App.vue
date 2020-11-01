@@ -2,7 +2,7 @@
     <div id="app" style="background: #F2F5F8;overflow: auto;height:100vh">
         <div class="in_back">
             <img src="../../assets/right.png" @click="backTap"/>
-            <p>邀请明细</p>
+            <p>团队详情</p>
         </div>
         <div style="position: relative;">
             <div class="in_top">
@@ -35,7 +35,7 @@
                     <thead>
                         <tr>
                             <th>日期</th>
-                            <th>有效人数</th>
+                            <th>活跃人数</th>
                             <th>总收益</th>
                             <th>人均收益</th>
                         </tr>
@@ -48,8 +48,8 @@
                             <td>
                                 <!-- <p>{{(item.firstReward + item.secondReward) / 10000}}元</p> -->
                                 <p>{{item.total | keepTwoNum}}元</p>
-                                <p>首个+{{item.firstReward / 10000 | keepTwoNum}}元</p>
-                                <p>后续+{{item.secondReward / 10000 | keepTwoNum}}元</p>
+                                <!-- <p>首个+{{item.firstReward / 10000 | keepTwoNum}}元</p>
+                                <p>后续+{{item.secondReward / 10000 | keepTwoNum}}元</p> -->
                             </td>
                             <td>{{item.per | keepTwoNum}}元</td>
                         </tr>
@@ -105,27 +105,27 @@ import {formatDate} from '../../utils/date.js'
 export default {
     data(){
         return{
-            drPeopleNum:'',
-            drReward:'',
+            drPeopleNum:'1',
+            drReward:'20000',
             listData:{
-                // drReward:'0',
-                // drPeopleNum:'0',
-                // updateTime:'0',
-                // apprenticeCount:'0',
-                // firstReward:'0',
-                // secondReward:'0',
-                // total:'0',
-                // per:'0'
+                drReward:'0',
+                drPeopleNum:'0',
+                updateTime:'0',
+                apprenticeCount:'0',
+                firstReward:'0',
+                secondReward:'0',
+                total:'0',
+                per:'0'
             },
             nav:[
                 {
                     id:1,
                     text:'每日总表'
                 },
-                {
-                    id:2,
-                    text:'达人奖励明细'
-                },
+                // {
+                //     id:2,
+                //     text:'团队奖励明细'
+                // },
             ],
             status:1,
             isShow:true,
@@ -170,11 +170,11 @@ export default {
                 pageSize:50,
                 pageNum:1
             }
-            this.$get('/api/ldarenReward/list',parameterData).then(res =>{
+            this.$get('/py/partner/partner_detail',parameterData).then(res =>{
                 if((res.statusCode+"").startsWith("2")){
                     this.listData = res.data.list;
                     for(let i =0 ;i<this.listData.length;i++){
-                        this.listData[i].total = (res.data.list[i].firstReward + res.data.list[i].secondReward) / 10000;
+                        // this.listData[i].total = (res.data.list[i].firstReward + res.data.list[i].secondReward)/10000;
                         if(this.listData[i].apprenticeCount == 0){
                             this.listData[i].per = this.listData[i].total;
                         }else{

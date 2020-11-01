@@ -47,7 +47,7 @@
         </div>
         <div class="et_toggle">
             <div class="game_toggle">
-                <div v-for="(item,index) in nav" :class="status == item.id ? 'activeTog' : ''" class="game_toggle_inner">
+                <div v-for="(item,index) in nav" :key="index" :class="status == item.id ? 'activeTog' : ''" class="game_toggle_inner">
                     <span @click="toggle(item.id)">{{item.text}}</span>
                     <div class="game_line"></div>
                 </div>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="table_wrapper">
                         <table>
-                            <tbody v-for="(item,index) in tableData">
+                            <tbody v-for="(item,index) in tableData" :key="index">
                                 <tr>
                                     <td>
                                         <img :src="item.profile" alt="">
@@ -258,7 +258,7 @@
                 </div>
                 <div style="height:1.5rem"></div>
                 <div class="gz_con">
-                    <img :src="item" alt="" v-for="item in ordinaryRewardImg">
+                    <img :src="item" alt="" v-for="(item, index) in ordinaryRewardImg" :key="index">
                 </div>
                 <div class="gz_btn">
                     <p @click="closeGZPT">知道了</p>
@@ -300,8 +300,8 @@ export default {
             imei:'',
             nav:[
                 {id:1, text:'普通邀请'},
-                // {id:2, text:'邀请达人'},
-                // {id:3, text:'合伙人'},
+                {id:2, text:'二级代理'},
+                {id:3, text:'一级代理'},
             ],
             status:1,
             isShowBoxOne:false,
@@ -429,9 +429,9 @@ export default {
                     if(res.data.roleType == 1){
                         res.data.roleType = '小麒麟';
                     }else if(res.data.roleType == 2){
-                        res.data.roleType = '团队长';
+                        res.data.roleType = '金麒麟';
                     }else if(res.data.roleType == 3){
-                        res.data.roleType = '超级合伙人';
+                        res.data.roleType = '玉麒麟';
                     }else{
                         res.data.roleType = '邀请达人';
                     }
@@ -439,9 +439,9 @@ export default {
                     if(res.data.highRole == 1){
                         res.data.highRole = '普通用户';
                     }else if(res.data.highRole == 2){
-                        res.data.highRole = '小客服';
+                        res.data.highRole = '二级代理';
                     }else{
-                        res.data.highRole = '合伙人';
+                        res.data.highRole = '一级代理';
                     }
 
                     this.ordinaryRewardImg = res.data.ordinaryRewardImg.split(',');

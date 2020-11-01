@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="myReward-foot">
-                <div v-if="listData.length>0 && isShow==1" v-for="(item,index) in listData">
+                <div v-if="listData.length>0 && isShow==1" v-for="(item,index) in listData" :key="index">
                     <div class="myReward-footInner">
                         <div class="myReward-footInnerLeft">
                             <p>徒弟贡献</p>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="myReward-footBaseline"></div>
                 </div>
-                <div v-if="apprenticeList.length>0 && isShow==2" v-for="(item,index) in apprenticeList">
+                <div v-if="apprenticeList.length>0 && isShow==2" v-for="(item,index) in apprenticeList" :key="index">
                     <div class="myReward-footInner">
                         <div class="myReward-footInnerSecondLeft">
                             <div><img src="../../assets/myRrwardHead.png"/></div>
