@@ -86,12 +86,26 @@
               <img src="../../assets/wenhao.png" alt="">
               <p @click="openOne">邀请规则</p>
             </div>
+
           </div>
+          <img src="http://qiniu.shouzhuan518.com/金麒麟竖.png" alt="" style="width:16.3rem">
           <!-- <p style="font-size:0.7rem;color:#9EA9BC;margin:0;">好友完成首个任务奖励师傅1.5元，之后每完成一个游戏任务奖励师傅1元(限高额赚、游戏试玩任务)7.5元封顶！</p> -->
-          <img :src="schemeImg[1]" alt="" style="width:16.8rem">
+<!--          <img :src="schemeImg[1]" alt="" style="width:16.8rem">-->
           <!-- <p class="yqdr_tips">若需推广合作，请联系商务<span>QQ:1501305376</span></p>
           <img src="../../assets/sjyqdr.png" alt="" @click="openOne" v-if="listData.roleType != '邀请达人'"> -->
         </div>
+        <div class="ptyq_center_img">
+<!--          <img src="../../assets/yqhy.png" alt="">-->
+<!--          <img src="../../assets/yqhytips.png" alt="">-->
+          <p><span>达成条件</span></p>
+          <p><span>1</span>*推广总的的效人数50人以上（直接推广）；</p>
+          <p><span>2</span>*团队日活跃值不低于50（活跃值指用户完成任务的数值，每获得一次金币奖励，即完成一个活跃值）；</p>
+          <p><span>3</span>*团队周活跃值不低于350,也可直接购买永久合伙权益；</p>
+<!--          <p><span>4</span>面对面邀请，帮助好友注册，也能提升成功率；</p>-->
+<!--          <p><span>5</span>你邀请好友时候，简单教一下您的朋友如何赚钱，您可以获取更多奖励。</p>-->
+          <!-- <img :src="item" alt="" v-for="item in inviteImg"> -->
+        </div>
+        <div style="height:2.8rem"></div>
         <div class="ranking">
           <div class="ranking_head">
             <div class="ranking_title">
@@ -152,7 +166,7 @@
               <p @click="openyyxq">规则详情 >></p>
             </div>
             <div class="ptyq_top_img">
-              <img :src="schemeImg[2]" alt="">
+              <img src="http://qiniu.shouzhuan518.com/玉麒麟竖.png" alt="">
             </div>
             <!-- <div class="yyzj_btn">
                 <img src="../../assets/yyzjbtn.png" alt="" v-if="listData.roleType == '小猪猪' && listData.isRenewal==2" @click="toPay(listData.price,2)">
@@ -160,13 +174,14 @@
             </div> -->
           </div>
           <div class="ptyq_center_img">
-            <img src="../../assets/yqhy.png" alt="">
-            <img src="../../assets/yqhytips.png" alt="">
-            <p><span>1</span>邀请您的家人、朋友、同学、同事的成功率更高；</p>
-            <p><span>2</span>分享3个以上微信群/qq群,邀请成功率提升100%；</p>
-            <p><span>3</span>可以告诉您的朋友: 1元即可提现；</p>
-            <p><span>4</span>面对面邀请，帮助好友注册，也能提升成功率；</p>
-            <p><span>5</span>你邀请好友时候，简单教一下您的朋友如何赚钱，您可以获取更多奖励。</p>
+<!--            <img src="../../assets/yqhy.png" alt="">-->
+<!--            <img src="../../assets/yqhytips.png" alt="">-->
+            <p><span>达成条件</span></p>
+            <p><span>1</span>*推广总的的效人数500人以上（直接推广）；</p>
+            <p><span>2</span>*团队日活跃值不低于2000（活跃值指用户完成任务的数值，每获得一次金币奖励，即完成一个活跃值）；</p>
+            <p><span>3</span>*团队周活跃值不低于15000,也可直接购买永久合伙权益；</p>
+<!--            <p><span>4</span>面对面邀请，帮助好友注册，也能提升成功率；</p>-->
+<!--            <p><span>5</span>你邀请好友时候，简单教一下您的朋友如何赚钱，您可以获取更多奖励。</p>-->
             <!-- <img :src="item" alt="" v-for="item in inviteImg"> -->
           </div>
           <div style="height:2.8rem"></div>
