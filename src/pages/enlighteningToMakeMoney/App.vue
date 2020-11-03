@@ -88,7 +88,7 @@
             </div>
 
           </div>
-          <img src="http://qiniu.shouzhuan518.com/金麒麟竖.png" alt="" style="width:16.3rem">
+          <img src="http://qiniu.shouzhuan518.com/金麒麟竖2.png" alt="" style="width:16.3rem">
           <!-- <p style="font-size:0.7rem;color:#9EA9BC;margin:0;">好友完成首个任务奖励师傅1.5元，之后每完成一个游戏任务奖励师傅1元(限高额赚、游戏试玩任务)7.5元封顶！</p> -->
 <!--          <img :src="schemeImg[1]" alt="" style="width:16.8rem">-->
           <!-- <p class="yqdr_tips">若需推广合作，请联系商务<span>QQ:1501305376</span></p>
@@ -106,54 +106,54 @@
           <!-- <img :src="item" alt="" v-for="item in inviteImg"> -->
         </div>
         <div style="height:2.8rem"></div>
-        <div class="ranking">
-          <div class="ranking_head">
-            <div class="ranking_title">
-              <div class="ranking_titbg">
-                <img src="../../assets/daren.png" alt="">
-              </div>
-              <div class="ranking_gz">
-                <img src="../../assets/guize.png" alt="">
-                <p @click="openRule">冲榜规则</p>
-              </div>
-            </div>
-            <p class="fontone">{{date}}</p>
-            <p class="fonttwo">当期达人邀请总数：{{count}}人</p>
-          </div>
+<!--        <div class="ranking">-->
+<!--          <div class="ranking_head">-->
+<!--            <div class="ranking_title">-->
+<!--              <div class="ranking_titbg">-->
+<!--                <img src="../../assets/daren.png" alt="">-->
+<!--              </div>-->
+<!--              <div class="ranking_gz">-->
+<!--                <img src="../../assets/guize.png" alt="">-->
+<!--                <p @click="openRule">冲榜规则</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <p class="fontone">{{date}}</p>-->
+<!--            <p class="fonttwo">当期达人邀请总数：{{count}}人</p>-->
+<!--          </div>-->
 
-          <div class="ranking_center">
-            <div class="ranking_center_left">
-              <p @click="jump">查看历史排行榜</p>
-              <img src="../../assets/jiantou.png" alt="">
-            </div>
-            <div class="ranking_center_right" @click="refresh">
-              <img src="../../assets/refresh.png" alt="" :class="rotate ? 'go':'black'">
-              <p>刷新</p>
-            </div>
-          </div>
-          <div class="ranking_bottom">
-            <img src="../../assets/listBg.png" alt="">
-          </div>
-          <div class="table_title">
-            <p style="margin-left:1.5rem;">昵称</p>
-            <p style="margin-left:1.5rem;">排名</p>
-            <p>累计邀请/人</p>
-          </div>
-          <div class="table_wrapper">
-            <table>
-              <tbody v-for="(item,index) in tableData" :key="index">
-              <tr>
-                <td>
-                  <img :src="item.profile" alt="">
-                  {{item.aliasName}}
-                </td>
-                <td>{{item.rank}}</td>
-                <td>{{item.apprenticeCount}}人</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+<!--          <div class="ranking_center">-->
+<!--            <div class="ranking_center_left">-->
+<!--              <p @click="jump">查看历史排行榜</p>-->
+<!--              <img src="../../assets/jiantou.png" alt="">-->
+<!--            </div>-->
+<!--            <div class="ranking_center_right" @click="refresh">-->
+<!--              <img src="../../assets/refresh.png" alt="" :class="rotate ? 'go':'black'">-->
+<!--              <p>刷新</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="ranking_bottom">-->
+<!--            <img src="../../assets/listBg.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="table_title">-->
+<!--            <p style="margin-left:1.5rem;">昵称</p>-->
+<!--            <p style="margin-left:1.5rem;">排名</p>-->
+<!--            <p>累计邀请/人</p>-->
+<!--          </div>-->
+<!--          <div class="table_wrapper">-->
+<!--            <table>-->
+<!--              <tbody v-for="(item,index) in tableData" :key="index">-->
+<!--              <tr>-->
+<!--                <td>-->
+<!--                  <img :src="item.profile" alt="">-->
+<!--                  {{item.aliasName}}-->
+<!--                </td>-->
+<!--                <td>{{item.rank}}</td>-->
+<!--                <td>{{item.apprenticeCount}}人</td>-->
+<!--              </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--        </div>-->
         <div style="height:3.8rem"></div>
 
       </div>
@@ -166,7 +166,7 @@
               <p @click="openyyxq">规则详情 >></p>
             </div>
             <div class="ptyq_top_img">
-              <img src="http://qiniu.shouzhuan518.com/玉麒麟竖.png" alt="">
+              <img src="http://qiniu.shouzhuan518.com/玉麒麟竖2.png" alt="">
             </div>
             <!-- <div class="yyzj_btn">
                 <img src="../../assets/yyzjbtn.png" alt="" v-if="listData.roleType == '小猪猪' && listData.isRenewal==2" @click="toPay(listData.price,2)">
