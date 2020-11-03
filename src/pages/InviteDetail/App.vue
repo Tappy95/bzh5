@@ -10,8 +10,8 @@
             </div>
             <div class="in_flex">
                 <div>
-                    <p>累计收益(元)</p>
-                    <p>{{drReward / 10000 | keepTwoNum}}</p>
+                    <p>累计收益(金币)</p>
+                    <p>{{drReward | keepTwoNum}}</p>
                 </div>
                 <div></div>
                 <div>
@@ -47,11 +47,13 @@
                             <td>{{item.apprenticeCount}}人</td>
                             <td>
                                 <!-- <p>{{(item.firstReward + item.secondReward) / 10000}}元</p> -->
-                                <p>{{item.total | keepTwoNum}}元</p>
+<!--                                <p>{{item.total | keepTwoNum}}金币</p>-->
+                                <p>{{item.total}}金币</p>
                                 <!-- <p>首个+{{item.firstReward / 10000 | keepTwoNum}}元</p>
                                 <p>后续+{{item.secondReward / 10000 | keepTwoNum}}元</p> -->
                             </td>
-                            <td>{{item.per | keepTwoNum}}元</td>
+<!--                            <td>{{item.per | keepTwoNum}}金币</td>-->
+                            <td>{{item.per}}金币</td>
                         </tr>
                     </tbody>
                 </table>
