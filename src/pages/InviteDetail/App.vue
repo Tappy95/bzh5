@@ -62,15 +62,17 @@
         <div v-if="this.status == 2" style="margin-top:12.5rem;" v-show="isShow">
             <div class="searchDiv">
                 <input type="text" placeholder="请输入所要查找的有效ID" v-model="accountId">
-                <p @click="searchData">搜索</p>
+                <p @click="searchData(0)" class="ui-button">搜索</p>
+                <p @click="searchData(1)" class="ui-button">一级</p>
+                <p @click="searchData(2)" class="ui-button">二级</p>
             </div>
             <div>
                 <table>
                     <thead>
                         <tr>
                             <th>好友ID</th>
-                            <th>任务名</th>
-                            <th>注册时间/任务时间</th>
+                            <th>好友层级</th>
+                            <th>奖励时间</th>
                             <th>奖励</th>
                         </tr>
                     </thead>
@@ -81,17 +83,16 @@
     text-align: center;
     background-color: #f2f5f8;
     width: 100%;
-    border: 1px solid $f2f5f8;
+    border: 1px solid #f2f5f8;
     padding: 0.8rem 0 0 4.5rem;"  v-if="this.tableData.length <= 0 || this.tableData.length == null">
                         <p>未搜索到相关ID</p>
                     </div>
                     <tbody v-for="(item,index) in tableData">
                         <tr>
-                            <td>{{item.accountId}}</td>
-                            <td>{{item.taskName}}</td>
+                            <td>{{item.account_id}}</td>
+                            <td>{{item.friend_floor}}</td>
                             <td>
-                                <p>{{item.regTime | formatDate}}</p>
-                                <p>{{item.taskTime | formatDate}}</p>
+                                <p>{{item.reward_time | formatDate}}</p>
                             </td>
                             <td style="color:#FF3352;">+{{item.reward}}<img src="./../../assets/jinqian.png" alt="" style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem"></td>
                         </tr>
@@ -124,10 +125,10 @@ export default {
                     id:1,
                     text:'每日总表'
                 },
-                // {
-                //     id:2,
-                //     text:'团队奖励明细'
-                // },
+                {
+                    id:2,
+                    text:'团队奖励明细'
+                },
             ],
             status:1,
             isShow:true,
@@ -186,22 +187,23 @@ export default {
                 }
             })
         },
-        getList(){
+        getList(value){
             let parameterData = {
                 accountId:this.accountId,
                 token:this.token,
                 imei:this.imei,
                 pageSize:50,
-                pageNum:1
-            }
-            this.$get('/api/darenRewardDetail/listF',parameterData).then(res =>{
+                pageNum:1,
+                friend_floor:value
+            };
+            this.$get('/py/partner/team_detail',parameterData).then(res =>{
                 if((res.statusCode+"").startsWith("2")){
                     this.tableData = res.data.list
                 }
             })
         },
-        searchData(){
-            this.getList();
+        searchData(value){
+            this.getList(value);
         }
     }
 }
@@ -210,6 +212,16 @@ export default {
 <style scoped>
 p{
     margin: 0;
+}
+.ui-button{
+  color: #fff !important;
+  border-radius: 10rem;
+  width: 2rem;
+  background-color: #d860f8;
+  text-align: center;
+}
+.ui-button:hover{
+  background-color: #5948eb;
 }
 .in_back{
     background-color: #fff;
@@ -341,7 +353,7 @@ thead{
     align-items: center;
 }
 .searchDiv input{
-    width: 13.4rem;
+    width: 8.4rem;
     height: 1.6rem;
     border: none;
     background-color: #F2F4F7;
