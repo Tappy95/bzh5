@@ -63,17 +63,24 @@
       <div class="searchDiv">
         <!--                <input type="text" placeholder="请输入所要查找的有效ID" v-model="accountId">-->
         <!--                <p @click="searchData(0)" class="ui-button">搜索</p>-->
-        <div>
-          <p @click="searchData(1)" class="ui-button">一级</p>
+        <div class="li">
+          <div>{{sum_1}}<img src="./../../assets/jinqian.png" alt=""
+                                                            style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem"></div>
+          <div @click="searchData(1)" class="ui-button">一级</div>
         </div>
-        <div>
-          <p @click="searchData(2)" class="ui-button">二级</p>
+        <div class="li">
+          <div>{{sum_2}}<img src="./../../assets/jinqian.png" alt=""
+                                                            style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem"></div>
+          <div @click="searchData(2)" class="ui-button">二级</div>
         </div>
-        <div>
-          <p @click="searchData(3)" class="ui-button">二级以下</p>
+        <div class="li">
+          <div>{{sum_3}}<img src="./../../assets/jinqian.png" alt=""
+                                                            style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem"></div>
+          <div @click="searchData(3)" class="ui-button">二级以下</div>
         </div>
       </div>
-      <div>
+      <div style ="padding-top:1rem">
+
         <table>
           <thead>
           <tr>
@@ -112,123 +119,132 @@
   </div>
 </template>
 <script>
-  import {formatDate} from '../../utils/date.js'
+    import {formatDate} from '../../utils/date.js'
 
-  export default {
-    data() {
-      return {
-        drPeopleNum: '1',
-        drReward: '20000',
-        listData: {
-          drReward: '0',
-          drPeopleNum: '0',
-          updateTime: '0',
-          apprenticeCount: '0',
-          firstReward: '0',
-          secondReward: '0',
-          total: '0',
-          per: '0'
-        },
-        nav: [
-          {
-            id: 1,
-            text: '每日总表'
-          },
-          {
-            id: 2,
-            text: '团队奖励明细'
-          },
-        ],
-        status: 1,
-        isShow: true,
-        tableData: {}
-      }
-    },
-    //过滤器
-    filters: {
-      formatDate(time) {
-        var date = new Date(time);
-        return formatDate(date, 'yyyy-MM-dd');
-      },
-      keepTwoNum: function (value) {
-        value = Number(value);
-        return value.toFixed(2);
-      }
-    },
-    created() {
-      this.token = APP.GetLocationParams("token");
-      this.imei = APP.GetLocationParams("imei");
-      this.drPeopleNum = APP.GetLocationParams("drPeopleNum");
-      this.drReward = APP.GetLocationParams("drReward");
-      this.getInfo();
-    },
-    methods: {
-      backTap() {
-        // window.history.go(-1);
-        window.location.href = '/generalizeDetails.html?token=' + this.token + '&imei=' + this.imei;
-      },
-      toggle(id) {
-        this.status = id;
-        if (this.status == 1) {
-          this.getInfo();
-        } else {
-          this.getList();
-        }
-      },
-      getInfo() {
-        let parameterData = {
-          token: this.token,
-          imei: this.imei,
-          pageSize: 50,
-          pageNum: 1
-        }
-        this.$get('/py/partner/partner_detail', parameterData).then(res => {
-          if ((res.statusCode + "").startsWith("2")) {
-            this.listData = res.data.list;
-            for (let i = 0; i < this.listData.length; i++) {
-              // this.listData[i].total = (res.data.list[i].firstReward + res.data.list[i].secondReward)/10000;
-              if (this.listData[i].apprenticeCount == 0) {
-                this.listData[i].per = this.listData[i].total;
-              } else {
-                this.listData[i].per = this.listData[i].total / this.listData[i].apprenticeCount;
-              }
+    export default {
+        data() {
+            return {
+                drPeopleNum: '1',
+                drReward: '20000',
+                listData: {
+                    drReward: '0',
+                    drPeopleNum: '0',
+                    updateTime: '0',
+                    apprenticeCount: '0',
+                    firstReward: '0',
+                    secondReward: '0',
+                    total: '0',
+                    per: '0'
+                },
+                nav: [
+                    {
+                        id: 1,
+                        text: '每日总表'
+                    },
+                    {
+                        id: 2,
+                        text: '团队奖励明细'
+                    },
+                ],
+                status: 1,
+                isShow: true,
+                tableData: {},
+                sum_1: 0,
+                sum_2: 0,
+                sum_3: 0,
             }
-          }
-        })
-      },
-      getList(value) {
-        let parameterData = {
-          accountId: this.accountId,
-          token: this.token,
-          imei: this.imei,
-          pageSize: 50,
-          pageNum: 1,
-          friend_floor: value
-        };
-        this.$get('/py/partner/team_detail', parameterData).then(res => {
-          if ((res.statusCode + "").startsWith("2")) {
-            this.tableData = res.data.list
-          }
-        })
-      },
-      searchData(value) {
-        this.getList(value);
-      }
+        },
+        //过滤器
+        filters: {
+            formatDate(time) {
+                var date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd');
+            },
+            keepTwoNum: function (value) {
+                value = Number(value);
+                return value.toFixed(2);
+            }
+        },
+        created() {
+            this.token = APP.GetLocationParams("token");
+            this.imei = APP.GetLocationParams("imei");
+            this.drPeopleNum = APP.GetLocationParams("drPeopleNum");
+            this.drReward = APP.GetLocationParams("drReward");
+            this.getInfo();
+        },
+        methods: {
+            backTap() {
+                // window.history.go(-1);
+                window.location.href = '/generalizeDetails.html?token=' + this.token + '&imei=' + this.imei;
+            },
+            toggle(id) {
+                this.status = id;
+                if (this.status == 1) {
+                    this.getInfo();
+                } else {
+                    this.getList();
+                }
+            },
+            getInfo() {
+                let parameterData = {
+                    token: this.token,
+                    imei: this.imei,
+                    pageSize: 50,
+                    pageNum: 1
+                }
+                this.$get('/py/partner/partner_detail', parameterData).then(res => {
+                    if ((res.statusCode + "").startsWith("2")) {
+                        this.listData = res.data.list;
+                        for (let i = 0; i < this.listData.length; i++) {
+                            // this.listData[i].total = (res.data.list[i].firstReward + res.data.list[i].secondReward)/10000;
+                            if (this.listData[i].apprenticeCount == 0) {
+                                this.listData[i].per = this.listData[i].total;
+                            } else {
+                                this.listData[i].per = this.listData[i].total / this.listData[i].apprenticeCount;
+                            }
+                        }
+                    }
+                })
+            },
+            getList(value) {
+                let parameterData = {
+                    accountId: this.accountId,
+                    token: this.token,
+                    imei: this.imei,
+                    pageSize: 50,
+                    pageNum: 1,
+                    friend_floor: value
+                };
+                this.$get('/py/partner/team_detail', parameterData).then(res => {
+                    if ((res.statusCode + "").startsWith("2")) {
+                        this.tableData = res.data.list;
+                        this.sum_1 = res.data.sum_1;
+                        this.sum_2 = res.data.sum_2;
+                        this.sum_3 = res.data.sum_3;
+                    }
+                })
+            },
+            searchData(value) {
+                this.getList(value);
+            }
+        }
     }
-  }
 </script>
 
 <style scoped>
   p {
     margin: 0;
   }
-
+  .li{
+    text-align: center;
+  }
   .ui-button {
     color: #fff !important;
     border-radius: 10rem;
     width: 5rem;
     background-color: #d860f8;
     text-align: center;
+    font-size: 1rem;
   }
 
   .ui-button:hover {
