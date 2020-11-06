@@ -62,7 +62,7 @@
             <p @click="openGZPT">规则详情 >></p>
           </div>
           <div class="ptyq_top_img">
-            <img :src="schemeImg[0]" alt="">
+            <img src="http://qiniu.shouzhuan518.com/axiaoqilin.png" alt="">
           </div>
         </div>
         <div class="ptyq_center_img">
@@ -88,7 +88,7 @@
             </div>
 
           </div>
-          <img src="http://qiniu.shouzhuan518.com/金麒麟竖2.png" alt="" style="width:16.3rem">
+          <img src="http://qiniu.shouzhuan518.com/ajinqilin.png" alt="" style="width:16.3rem">
           <!-- <p style="font-size:0.7rem;color:#9EA9BC;margin:0;">好友完成首个任务奖励师傅1.5元，之后每完成一个游戏任务奖励师傅1元(限高额赚、游戏试玩任务)7.5元封顶！</p> -->
 <!--          <img :src="schemeImg[1]" alt="" style="width:16.8rem">-->
           <!-- <p class="yqdr_tips">若需推广合作，请联系商务<span>QQ:1501305376</span></p>
@@ -166,7 +166,7 @@
               <p @click="openyyxq">规则详情 >></p>
             </div>
             <div class="ptyq_top_img">
-              <img src="http://qiniu.shouzhuan518.com/玉麒麟竖2.png" alt="">
+              <img src="http://qiniu.shouzhuan518.com/ayuqilin.png" alt="">
             </div>
             <!-- <div class="yyzj_btn">
                 <img src="../../assets/yyzjbtn.png" alt="" v-if="listData.roleType == '小猪猪' && listData.isRenewal==2" @click="toPay(listData.price,2)">
