@@ -111,10 +111,10 @@
         </div> -->
 
 
-        <!-- <div style="background-color:#F2F5F8" @click="openPage">
+        <div style="background-color:#F2F5F8" @click="openPage">
             <div class="gd_bottom">
                 <div class="gd_bottom_title_last">
-                    <p style="margin-left:6.1rem">普通行为贡献</p>
+                    <p style="margin-left:6.1rem">合伙人</p>
                     <div class="gd_font">
                         <p>详情</p>
                         <img src="../../assets/rightBtn.png" alt="">
@@ -122,7 +122,7 @@
                 </div>
                 <div class="gd_bottom_conten">
                     <div class="gd_bottom_left">
-                        <p>人数<span>(含达人、合伙人)</span></p>
+                        <p>人数<span>(合伙人)</span></p>
                         <p>{{listData.ordinaryPeopleNum}}</p>
                     </div>
                     <div class="gd_bottom_right">
@@ -134,7 +134,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div style="height:2rem"></div>
 
     </div>
@@ -187,7 +187,8 @@ export default {
             window.location.href = '/InviteDetail.html?token='+this.token+'&imei='+this.imei+'&drPeopleNum='+this.listData.drPeopleNum+'&drReward='+this.listData.drReward;
         },
         openPage(){
-            window.location.href = '/myReward.html?token='+this.token+'&imei='+this.imei+'&reward='+this.reward;
+            // window.location.href = '/myReward.html?token='+this.token+'&imei='+this.imei+'&reward='+this.reward;
+            window.location.href = '/InviteDetail2.html?token='+this.token+'&imei='+this.imei+'&reward='+this.reward;
         },
         openPD(){
             window.location.href = '/partnerDetails.html?token='+this.token+'&imei='+this.imei;

@@ -442,7 +442,7 @@
                     token: this.token,
                     imei: this.imei
                 }
-                this.$get('/api/mFissionScheme/schemeImg', parameterData).then(res => {
+                this.$get('/py/partner/index', parameterData).then(res => {
                     if ((res.statusCode + "").startsWith("2")) {
                         if (res.data.roleType == 1) {
                             res.data.roleType = '小麒麟';

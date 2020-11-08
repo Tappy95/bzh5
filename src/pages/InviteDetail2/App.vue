@@ -2,7 +2,7 @@
   <div id="app" style="background: #F2F5F8;overflow: auto;height:100vh">
     <div class="in_back">
       <img src="../../assets/right.png" @click="backTap"/>
-      <p>团队详情</p>
+      <p>合伙人详情</p>
     </div>
     <div style="position: relative;">
       <div class="in_top">
@@ -11,12 +11,12 @@
       <div class="in_flex">
         <div>
           <p>累计收益(金币)</p>
-          <p>{{drReward | keepTwoNum}}</p>
+          <p>{{total_reward | keepTwoNum}}</p>
         </div>
         <div></div>
         <div>
-          <p>好友人数(人)</p>
-          <p>{{drPeopleNum}}</p>
+          <p>合伙人数(人)</p>
+          <p>{{partner_count}}</p>
         </div>
       </div>
     </div>
@@ -35,9 +35,9 @@
           <thead>
           <tr>
             <th>日期</th>
-            <th>活跃人数</th>
-            <th>总收益</th>
-            <th>人均收益</th>
+            <th>活跃合伙人数</th>
+            <th>一级收益</th>
+            <th>二级收益</th>
           </tr>
           </thead>
           <div style="height:1.4rem"></div>
@@ -48,12 +48,12 @@
             <td>
               <!-- <p>{{(item.firstReward + item.secondReward) / 10000}}元</p> -->
               <!--                                <p>{{item.total | keepTwoNum}}金币</p>-->
-              <p>{{item.total}}金币</p>
+              <p>{{item.firstReward}}金币</p>
               <!-- <p>首个+{{item.firstReward / 10000 | keepTwoNum}}元</p>
               <p>后续+{{item.secondReward / 10000 | keepTwoNum}}元</p> -->
             </td>
             <!--                            <td>{{item.per | keepTwoNum}}金币</td>-->
-            <td>{{item.per|keepTwoNum}}金币</td>
+            <td>{{item.secondReward}}金币</td>
           </tr>
           </tbody>
         </table>
@@ -140,11 +140,11 @@
                     {
                         id: 1,
                         text: '每日总表'
-                    },
-                    {
-                        id: 2,
-                        text: '团队奖励明细'
-                    },
+                    }
+                    // {
+                    //     id: 2,
+                    //     text: '团队奖励明细'
+                    // },
                 ],
                 status: 1,
                 isShow: true,
@@ -152,6 +152,8 @@
                 sum_1: 0,
                 sum_2: 0,
                 sum_3: 0,
+                total_reward:0,
+                partner_count:0
             }
         },
         //过滤器
@@ -192,17 +194,19 @@
                     pageSize: 50,
                     pageNum: 1
                 }
-                this.$get('/py/partner/partner_detail', parameterData).then(res => {
+                this.$get('/py/partner/agent_detail', parameterData).then(res => {
                     if ((res.statusCode + "").startsWith("2")) {
                         this.listData = res.data.list;
-                        for (let i = 0; i < this.listData.length; i++) {
-                            // this.listData[i].total = (res.data.list[i].firstReward + res.data.list[i].secondReward)/10000;
-                            if (this.listData[i].apprenticeCount == 0) {
-                                this.listData[i].per = this.listData[i].total;
-                            } else {
-                                this.listData[i].per = this.listData[i].total / this.listData[i].apprenticeCount;
-                            }
-                        }
+                        this.partner_count = res.data.partner_count;
+                        this.total_reward = res.data.total_reward;
+                        // for (let i = 0; i < this.listData.length; i++) {
+                        //     // this.listData[i].total = (res.data.list[i].firstReward + res.data.list[i].secondReward)/10000;
+                        //     if (this.listData[i].apprenticeCount == 0) {
+                        //         this.listData[i].per = this.listData[i].total;
+                        //     } else {
+                        //         this.listData[i].per = this.listData[i].total / this.listData[i].apprenticeCount;
+                        //     }
+                        // }
                     }
                 })
             },

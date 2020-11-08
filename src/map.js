@@ -139,6 +139,11 @@ let map ={
     build:true,
     dev:true
   },
+  // 合伙人明细
+  'InviteDetail2':{
+    build:true,
+    dev:true
+  },
   // 复制邀请页面
   'invitePage':{
     build:true,
@@ -296,5 +301,5 @@ let map ={
     build:false,
     dev:false
   },
-}
+};
 module.exports = map;
