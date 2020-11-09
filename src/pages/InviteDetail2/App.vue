@@ -73,20 +73,20 @@
                                                             style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem"></div>
           <div @click="searchData(2)" class="ui-button">二级</div>
         </div>
-        <div class="li">
-          <div>{{sum_3}}<img src="./../../assets/jinqian.png" alt=""
-                                                            style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem"></div>
-          <div @click="searchData(3)" class="ui-button">二级以下</div>
-        </div>
+<!--        <div class="li">-->
+<!--          <div>{{sum_3}}<img src="./../../assets/jinqian.png" alt=""-->
+<!--                                                            style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem"></div>-->
+<!--          <div @click="searchData(3)" class="ui-button">二级以下</div>-->
+<!--        </div>-->
       </div>
       <div style ="padding-top:1rem">
 
         <table>
           <thead>
           <tr>
-            <th>流水ID</th>
-            <th>好友层级</th>
-            <th>奖励时间</th>
+            <th>合伙人ID</th>
+            <th>合伙人层级</th>
+            <th>结算时间</th>
             <th>奖励</th>
           </tr>
           </thead>
@@ -103,10 +103,11 @@
           </div>
           <tbody v-for="(item,index) in tableData">
           <tr>
-            <td>{{item.id}}</td>
+            <td>{{item.account_id}}</td>
             <td>{{item.friend_floor}}</td>
             <td>
-              <p>{{item.reward_time | formatDate}}</p>
+<!--              <p>{{item.reward_time | formatDate}}</p>-->
+              <p>{{item.reward_time}}</p>
             </td>
             <td style="color:#FF3352;">+{{item.reward}}<img src="./../../assets/jinqian.png" alt=""
                                                             style="width:0.7rem;height:0.7rem;vertical-align:middle;margin-left:0.2rem">
@@ -140,11 +141,11 @@
                     {
                         id: 1,
                         text: '每日总表'
-                    }
-                    // {
-                    //     id: 2,
-                    //     text: '团队奖励明细'
-                    // },
+                    },
+                    {
+                        id: 2,
+                        text: '团队奖励明细'
+                    },
                 ],
                 status: 1,
                 isShow: true,
@@ -219,12 +220,12 @@
                     pageNum: 1,
                     friend_floor: value
                 };
-                this.$get('/py/partner/team_detail', parameterData).then(res => {
+                this.$get('/py/partner/leader_detail', parameterData).then(res => {
                     if ((res.statusCode + "").startsWith("2")) {
                         this.tableData = res.data.list;
                         this.sum_1 = res.data.sum_1;
                         this.sum_2 = res.data.sum_2;
-                        this.sum_3 = res.data.sum_3;
+                        // this.sum_3 = res.data.sum_3;
                     }
                 })
             },
