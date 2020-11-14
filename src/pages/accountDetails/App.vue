@@ -303,7 +303,7 @@
               } else if (res.data.list[i].changedType == '4') {
                 res.data.list[i].changedType = '推荐用户'
               } else if (res.data.list[i].changedType == '5') {
-                res.data.list[i].changedType = '好友贡献'
+                res.data.list[i].changedType = '徒弟贡献金额'
               } else if (res.data.list[i].changedType == '6') {
                 res.data.list[i].changedType = '宝猪会员'
               } else if (res.data.list[i].changedType == '7') {
@@ -371,7 +371,7 @@
               } else if (res.data.list[i].changedType == '38') {
                 res.data.list[i].changedType = '合伙人二级以下直属用户贡献'
               } else if (res.data.list[i].changedType == '39') {
-                res.data.list[i].changedType = '徒弟贡献金额'
+                res.data.list[i].changedType = '代理推广收益分成'
               } else if (res.data.list[i].changedType == '40') {
                 res.data.list[i].changedType = '徒孙贡献金额'
               } else if (res.data.list[i].changedType == '41') {
@@ -584,7 +584,7 @@
                   } else if (res.data.list[i].changedType == '38') {
                     res.data.list[i].changedType = '合伙人二级以下直属用户贡献'
                   } else if (res.data.list[i].changedType == '39') {
-                    res.data.list[i].changedType = '徒弟贡献金额'
+                    res.data.list[i].changedType = '代理推广收益分成'
                   } else if (res.data.list[i].changedType == '40') {
                     res.data.list[i].changedType = '徒孙贡献金额'
                   } else {
