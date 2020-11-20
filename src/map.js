@@ -250,7 +250,7 @@ let map ={
   // 提现记录
   'withdrawalRecord':{
     build:true,
-    dev:false
+    dev:true
   },
   // 心愿猪下载
   'xyzChannelDownload':{
