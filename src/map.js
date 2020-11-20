@@ -28,7 +28,7 @@ let map ={
   // 常见问题
   'askQuestion':{
     build:true,
-    dev:false
+    dev:true
   },
   'awardState':{
     build:true,
