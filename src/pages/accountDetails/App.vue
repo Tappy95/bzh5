@@ -393,11 +393,11 @@
                                 res.data.list[i].coinBalance = ''
                             }
                         }
-                        res.data.list = res.data.list.filter(item => {
-                            if (item.remarks != '每日工资提现') {
-                                return item
-                            }
-                        });
+                        // res.data.list = res.data.list.filter(item => {
+                        //     if (item.remarks != '每日工资提现') {
+                        //         return item
+                        //     }
+                        // });
                         this.total = res.data.total;
                         if (res.data.list.length > 0) {
                             if (res.data.total > 10) {
