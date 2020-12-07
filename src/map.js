@@ -23,7 +23,7 @@ let map ={
   // 对战答题
   'againstWait':{
     build:false,
-    dev:false
+    dev:true
   },
   // 常见问题
   'askQuestion':{
@@ -32,17 +32,17 @@ let map ={
   },
   'awardState':{
     build:true,
-    dev:false
+    dev:true
   },
   // 宝猪会员
   'bzCard':{
     build:true,
-    dev:false
+    dev:true
   },
   // 金猪每日战报
   'bzData':{
     build:true,
-    dev:false
+    dev:true
   },
   // 宝猪天天送
   'bzState':{
@@ -57,7 +57,7 @@ let map ={
   // 抽奖
   'choujiang':{
     build:true,
-    dev:false
+    dev:true
   },
   // 打卡记录
   'clockRecord':{
@@ -222,7 +222,7 @@ let map ={
   // 28规则
   'teGuize':{
     build:true,
-    dev:false
+    dev:true
   },
   // 排行榜
   'topList':{
@@ -231,16 +231,16 @@ let map ={
   },
   'twoeightGuize1':{
     build:true,
-    dev:false
+    dev:true
   },
   'twoeightGuizeTwo1':{
     build:true,
-    dev:false
+    dev:true
   },
   // 声明
   'userAgreement':{
     build:true,
-    dev:false
+    dev:true
   },
   // 对战答题
   'waitFriends':{
