@@ -2,7 +2,7 @@
     <div id="app" id="app" style="height: 100vh;background: #F64840;overflow: auto;position: relative;">
         <div class="bzs_head" @click="back">
             <img src="../../assets/enlighteningRight.png" />
-            <p>宝猪天天送</p>
+            <p>麒麟天天送</p>
         </div>
         <div class="bzs_bg">
             <img src="../../assets/bzState/bzsbg.png" alt="">
